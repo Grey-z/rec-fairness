@@ -1,6 +1,6 @@
 import pandas
 import pandas as pd
-import sklearn
+import numpy as np
 from sklearn.metrics import log_loss, roc_auc_score
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 from deepctr.models import DeepFEFM
 from deepctr.feature_column import SparseFeat, VarLenSparseFeat, get_feature_names
-import numpy as np
+
 
 def neg_sample(u_data, neg_rate=1):
     # 全局随机采样
