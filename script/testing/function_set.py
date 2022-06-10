@@ -126,18 +126,17 @@ def get_all_rule_dict(data,sparse_feats,dense_feats,dense_num):
     if len(dense_feats) > 0:
         for feature in dense_feats:
             temp_rule = []
-            single_rule = get_single_sparse_rule(data,feature)  
+            single_rule = get_single_dense_rule(data,feature,dense_num)  
             single_rule_dict = single_rule_dict + single_rule
             if len(all_rule_dict) > 0: 
                 temp_rule = combine_rule(all_rule_dict,single_rule)
-            all_rule_dict = all_rule_dict + single_rule + temp_rule
-                single_rule = get_single_dense_rule(data,feature,dense_num)
+            all_rule_dict = all_rule_dict + single_rule + temp_rule 
     return all_rule_dict
 
 def get_evaluate_data(data,rule):
     result = creat_sparse_rule_query(rule)
     select_group = data.query(result)
-    unselect_group = data.drop(select_data.index)
+    unselect_group = data.drop(select_group.index)
 
     return select_group,unselect_group
 
@@ -161,5 +160,3 @@ def get_test_data(x_file,y_file):
 
     test = pd.concat([test_x, test_y], axis=1)
     return test
-
-
