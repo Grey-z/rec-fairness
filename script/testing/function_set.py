@@ -14,6 +14,7 @@ def get_feat_dict(data):
                  'age': 7,
                  'occupation': 21,
                  'zipcode': 3439}
+        
     return feat_dict
 
 def get_saved_model_details(model_params, data_params):
